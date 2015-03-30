@@ -92,7 +92,7 @@ var g = svg.append("g");
 var stateGroup = g.append('g');
 var arcGroup = g.append('g');
 
-d3.json("us.json", function(error, us) {
+d3.json("http://frkysl.github.io/us.json", function(error, us) {
     // draw states
     stateGroup.append("g")
       .attr("id", "states")
@@ -107,7 +107,7 @@ d3.json("us.json", function(error, us) {
       .attr("id", "state-borders")
       .attr("d", path);
 
-    d3.csv("1950-2013_torn.csv", function(error, data) {
+    d3.csv("http://frkysl.github.io/1950-2013_torn.csv", function(error, data) {
         // --- Helper functions (for tweening the path)
         var lineTransition = function lineTransition(path) {
             path.transition()
