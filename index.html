@@ -92,7 +92,7 @@ var g = svg.append("g");
 var stateGroup = g.append('g');
 var arcGroup = g.append('g');
 
-d3.json("http://localhost/us.json", function(error, us) {
+d3.json("us.json", function(error, us) {
     // draw states
     stateGroup.append("g")
       .attr("id", "states")
@@ -120,7 +120,6 @@ d3.json("http://localhost/us.json", function(error, us) {
                     
                     //We might want to do stuff when the line reaches the target,
                     //  like start the pulsating or add a new point or tell the
-                    //  NSA to listen to this guy's phone calls
                     //doStuffWhenLineFinishes(d,i);
                 });
         };
@@ -134,35 +133,41 @@ d3.json("http://localhost/us.json", function(error, us) {
             return function(t) { return interpolate(t); };
         };
 
-        // --- Add paths
+        //filter Data for visualization
+		// Some tornadoes do not have end location so omit them for visualization
+    	filteredData = data.filter(function(d){ return d.elon != 0; }); 
+		// Omit small tornadoes
+		filteredData = filteredData.filter(function(d){ return d.len > 15; });
+		
+		
+		//scaling according to input data
+		var colorScale = d3.scale.linear().domain([0,5]).range(["blue","red"]);
+		var widthScale = d3.scale.pow().exponent(.5).domain(d3.extent(filteredData.map(function(d){ return d.wid; }))).range([".5px", "1.5px"]);
+		var opacityScale = d3.scale.quantile().domain([0,5]).range([.1,.4,.5,.6,.7,.8,.9]);
+		
+		
+		// --- Add paths
         // Format of object is an array of objects, each containing
         //  a type (LineString - the path will automatically draw a greatArc)
         //  and coordinates 
-        var links = [
-            {
-                type: "LineString",
-                    coordinates: [
-                        [ data[0].slon, data[0].slat ],
-                        [ data[0].elon, data[0].elat ]
-                    ]
-            }
-        ];
+		var links = filteredData.map(function(f) {
+		  return {
+			type: "LineString",
+			//coordinates
+			coordinates: [
+			  [ f.slon, f.slat ],
+			  [ f.elon, f.elat ]
+			],
+			color: colorScale(f.f), //color
+			width: widthScale(f.wid), //width
+			opacity: opacityScale(f.f) //opacity
 
-        // you can build the links any way you want - e.g., if you have only
-        //  certain items you want to draw paths between
-        // Alterntively, it can be created automatically based on the data
-        links = [];
-        for(var i=0, len=data.length; i<len; i++){
-            links.push({
-                type: "LineString",
-                coordinates: [
-                    [ data[i].slon, data[i].slat ],
-                    [ data[i].elon, data[i].elat ]
-                ]
-            });
-        }
+			}			
+		});
 
-        // Standard enter / update 
+		console.log(links);  //debugging
+        
+		// Standard enter / update 
         var pathArcs = arcGroup.selectAll(".arc")
             .data(links);
 
@@ -181,9 +186,18 @@ d3.json("http://localhost/us.json", function(error, us) {
                 d: path
             })
             .style({
-                stroke: '#0000ff',
-                'stroke-width': '2px'
-            })
+			stroke: function(link) {
+					return link.color;
+					},
+			'stroke-width': function(link) {
+							return link.width;
+							},
+			'opacity': function(link) {
+							return link.opacity;
+							}
+			})
+
+
             // Uncomment this line to remove the transition
             .call(lineTransition); 
 
