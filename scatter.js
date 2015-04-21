@@ -1,9 +1,9 @@
 
 
 
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    w = 6*50 - margin.left - margin.right,
-    h = 9*50 - margin.top - margin.bottom;
+var margin = {top: 50, right:50, bottom: 50, left: 50},
+    w = 6*50 + margin.left - margin.right,
+    h = 9*50 + margin.top - margin.bottom;
  
 var color = d3.scale.linear()
     .domain([0, 2000])
@@ -11,12 +11,12 @@ var color = d3.scale.linear()
     .interpolate(d3.interpolateLab);
  
 var x = d3.scale.linear()
-    .domain([0, 5])
-    .range([0, w]);
+    .domain([0, 6])
+    .range([0, w + 50]);
  
 var y = d3.scale.linear()
-    .domain([0, 9])
-    .range([h, 0]);
+    .domain([0, 10])
+    .range([h , -50]);
  
 var yinv = d3.scale.linear()
     .domain([0, 9])
@@ -32,6 +32,8 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
+    
+    
 	
  
 var side = 1;
@@ -57,14 +59,26 @@ d3.csv("paired.csv", function(error, data) {
   });
  		//console.log(points);  //debugging
 
-  svg.append("g")
+//  svg.append("g")
+//      .attr("class", "x axis")
+//      .attr("transform", "translate(0," + h + ")")
+//      .call(xAxis);
+ 
+ var selX = svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + h + ")")
       .call(xAxis);
+  selX.selectAll("text").attr("transform", "translate(25, 0)");
  
-  svg.append("g")
+  var selY = svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
+  selY.selectAll("text").attr("transform", "translate(0, -25)");
+ 
+ 
+  //svg.append("g")
+  //    .attr("class", "y axis")
+   //   .call(yAxis);
  
  
 svg.selectAll(".square")
