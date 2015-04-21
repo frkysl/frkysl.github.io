@@ -71,12 +71,12 @@ d3.csv("paired.csv", function(error, data) {
   var selY = svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
-  selY.selectAll("text").attr("transform", "translate(0, 25)");
+  selY.selectAll("text").attr("transform", "translate(0, -25)");
  
  
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
+  //svg.append("g")
+  //    .attr("class", "y axis")
+   //   .call(yAxis);
  
  
 svg.selectAll(".square")
