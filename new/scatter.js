@@ -16,7 +16,7 @@ var x = d3.scale.linear()
  
 var y = d3.scale.linear()
     .domain([0, 10])
-    .range([h - 50, 0]);
+    .range([h , -50]);
  
 var yinv = d3.scale.linear()
     .domain([0, 9])
