@@ -59,7 +59,7 @@ d3.csv("paired.csv", function(error, data) {
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + h + ")")
+      .attr("transform", "translate(25," + h + ")")
       .call(xAxis);
  
   svg.append("g")
