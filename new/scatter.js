@@ -57,10 +57,22 @@ d3.csv("paired.csv", function(error, data) {
   });
  		//console.log(points);  //debugging
 
-  svg.append("g")
+//  svg.append("g")
+//      .attr("class", "x axis")
+//      .attr("transform", "translate(0," + h + ")")
+//      .call(xAxis);
+ 
+ var selX = svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(25," + h + ")")
+      .attr("transform", "translate(0," + h + ")")
       .call(xAxis);
+  selX.selectAll("text").attr("transform", "translate(25, 0)");
+ 
+  var selY = svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+  selY.selectAll("text").attr("transform", "translate(0, 25)");
+ 
  
   svg.append("g")
       .attr("class", "y axis")
