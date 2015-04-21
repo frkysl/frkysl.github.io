@@ -26,7 +26,7 @@ var g = svg.append("g");
 var stateGroup = g.append('g');
 var arcGroup = g.append('g');
 
-d3.json("http://localhost/us.json", function(error, us) {
+d3.json("./us.json", function(error, us) {
     // draw states
     stateGroup.append("g")
       .attr("id", "states")
