@@ -42,7 +42,7 @@ var bins = d3.bin()
     .size([w, h])
     .side(side);
  
-var svg = d3.select("body").append("svg")
+var svg = d3.select(#area2).append("svg")
     .attr("width", w + margin.left + margin.right)
     .attr("height", h + margin.top + margin.bottom)
     .append("g")
