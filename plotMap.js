@@ -12,7 +12,7 @@ var path = d3.geo.path()
 
 var graticule = d3.geo.graticule();
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#area1").append("svg")
     .attr("width", width)
     .attr("height", height);
 
