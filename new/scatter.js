@@ -11,12 +11,12 @@ var color = d3.scale.linear()
     .interpolate(d3.interpolateLab);
  
 var x = d3.scale.linear()
-    .domain([0, 5])
-    .range([0, w]);
+    .domain([0, 6])
+    .range([0, w + 50]);
  
 var y = d3.scale.linear()
-    .domain([0, 9])
-    .range([h, 0]);
+    .domain([0, 10])
+    .range([h + 50, 0]);
  
 var yinv = d3.scale.linear()
     .domain([0, 9])
@@ -24,15 +24,16 @@ var yinv = d3.scale.linear()
  
 var xAxis = d3.svg.axis()
     .scale(x)
-	.tickValues([0,1,2,3,4,5,6])
+	.tickValues([0,1,2,3,4,5])
     .tickFormat(d3.format(",.0d"))
 	//.tickPadding()
     .orient("bottom");
  
 var yAxis = d3.svg.axis()
     .scale(y)
-    .tickValues([0,1,2,3,4,5,6,7,8,9,10])
     .orient("left");
+    
+    
 	
  
 var side = 1;
