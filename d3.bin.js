@@ -33,13 +33,13 @@ d3.bin = function() {
 
   function square(side) {
     var dx = side,
-        dy = side;
+          dy = side;
       return [dx, dy];
   }
 
   bin.x = function(_) {
     if (!arguments.length) return x;
-    x = _+100;
+    x = _;
     return bin;
   };
 
