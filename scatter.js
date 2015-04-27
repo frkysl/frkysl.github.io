@@ -1,9 +1,9 @@
 
 
 
-var margin = {top: 50, right:50, bottom: 50, left: 50},
-    w = 6*50 + margin.left - margin.right,
-    h = 9*50 + margin.top - margin.bottom;
+var margin = {top: 50, right:100, bottom: 100, left: 50},
+    w = 6*30 + margin.left - margin.right,
+    h = 9*30 + margin.top - margin.bottom;
  
 var color = d3.scale.linear()
     .domain([0, 2000])
@@ -12,11 +12,11 @@ var color = d3.scale.linear()
  
 var x = d3.scale.linear()
     .domain([0, 6])
-    .range([0, w + 50]);
+    .range([0, w + 30]);
  
 var y = d3.scale.linear()
     .domain([0, 10])
-    .range([h , -50]);
+    .range([h , -30]);
  
 var yinv = d3.scale.linear()
     .domain([0, 9])
@@ -98,6 +98,22 @@ svg.selectAll(".square")
             d3.select(this).classed("highlight", false)
        });
 	   
+
+	   svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0-margin.left*0.8)
+        .attr("x",0-(h/2)+10 )
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Hail Size (inch)");
+        
+svg.append("text")      // text label for the x axis
+        .attr("x", 0 + (w/2)+15)
+        .attr("y", 0 + h + margin.bottom*0.35 )
+        .style("text-anchor", "middle")
+        .text("Scale (F)");
+	   
 	   
 	  
 });
+
