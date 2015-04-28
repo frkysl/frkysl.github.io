@@ -147,8 +147,7 @@ d3.json("us.json", function(error, us) {
         //exit
         pathArcs.exit().remove();
 
-    });
-
+    }
 });
 
 function clicked(d) {
