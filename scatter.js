@@ -97,7 +97,8 @@ svg.selectAll(".square")
       })
       .on("mouseout", function (d) {
             d3.select(this).classed("highlight", false)
-       });
+       })
+       .append("text").text(function(d) { return d.length; });
 	   
 
 	   svg.append("text")
