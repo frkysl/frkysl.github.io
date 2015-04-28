@@ -1,6 +1,3 @@
-
-
-
 var margin = {top: 50, right:100, bottom: 100, left: 50},
     w = 6*30 + margin.left - margin.right,
     h = 9*30 + margin.top - margin.bottom;
@@ -33,6 +30,9 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
     
+    
+	
+ 
 var side = 1;
  
 var bins = d3.bin()
@@ -65,12 +65,11 @@ d3.csv("paired.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + h + ")")
       .call(xAxis);
-  selX.selectAll("text").attr("transform", "translate(25, 0)");
+  selX.selectAll("text").attr("transform", "translate(15, 0)");
  
   var selY = svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
-  selY.selectAll("text").attr("transform", "translate(0, -25+25)");
  
  
   //svg.append("g")
@@ -113,4 +112,3 @@ svg.append("text")      // text label for the x axis
 	   
 	  
 });
-
