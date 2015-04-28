@@ -76,6 +76,7 @@ data.forEach(function(d, ix) {
   //    .attr("class", "y axis")
    //   .call(yAxis);
  
+ window.filterIndices = null;
  
 svg.selectAll(".square")
       .data(bins(points))
