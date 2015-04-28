@@ -95,11 +95,17 @@ svg.selectAll(".square")
   });
   window.update();
       })
+      
+      on("click", function (d) {window.filterIndices = d.map(function(el) {
+               return el[2];
+  });
+  window.update();
+      })
+      
       .on("mouseout", function (d) {
             d3.select(this).classed("highlight", false)
        })
-       .append("title").text(function(d) { return d.length; })
-       ;
+       .append("title").text(function(d) { return d.length; })       ;
 	   
 
 	   svg.append("text")
