@@ -93,6 +93,7 @@ svg.selectAll(".square")
 		window.filterIndices = d.map(function(el) {
                return el[2];
   });
+  update();
       })
       .on("mouseout", function (d) {
             d3.select(this).classed("highlight", false)
