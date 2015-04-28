@@ -25,7 +25,7 @@ var g = svg.append("g");
 // order is important
 var stateGroup = g.append('g');
 var arcGroup = g.append('g');
-
+window.update = null;
 d3.json("us.json", function(error, us) {
     // draw states
     stateGroup.append("g")
@@ -46,7 +46,7 @@ d3.json("us.json", function(error, us) {
   data = load;
   update();
     });
-    function update() {
+    window.update =function update() {
         // --- Helper functions (for tweening the path)
         var lineTransition = function lineTransition(path) {
             path.transition()
