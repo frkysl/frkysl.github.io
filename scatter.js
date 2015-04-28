@@ -88,7 +88,7 @@ svg.selectAll(".square")
       .attr("height", yinv(side)-2)
       .style("fill", function(d) { return color(d.length); })
 	  // the function is called every time the event occurs
-      .on("mouseover", function (d) {
+      .on("click", function (d) {
 		d3.select(this).classed("highlight", true)
 		window.filterIndices = d.map(function(el) {
                return el[2];
