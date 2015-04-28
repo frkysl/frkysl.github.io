@@ -59,6 +59,10 @@ d3.json("us.json", function(error, us) {
         };
 		
 		//filter Data for visualization
+		var tmpData = window.filterIndices ? window.filterIndices.map(function(ix) {
+   return data[ix];
+  }) : data;
+     filteredData = tmpData.filter(function(d){ return d.elon != 0; });
 		// Some tornadoes do not have end location so omit them for visualization
     	filteredData = data.filter(function(d){ return d.elon != 0; }); 
 		// Omit small tornadoes
