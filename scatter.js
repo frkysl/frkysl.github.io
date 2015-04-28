@@ -122,7 +122,7 @@ svg.append("text")      // text label for the x axis
 	  
 });
 
-svg.append("button").attr({
+d3.select("#area2").append("button").attr({
  "type": "button"
 }).text("show all").on("click", function() {
  window.filterIndices = null;
