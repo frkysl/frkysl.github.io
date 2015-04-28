@@ -68,12 +68,12 @@ d3.csv("paired.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + h + ")")
       .call(xAxis);
-  selX.selectAll("text").attr("transform", "translate(25, 0)");
+  selX.selectAll("text").attr("transform", "translate(15, 0)");
  
   var selY = svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
-  selY.selectAll("text").attr("transform", "translate(0, -25)");
+  selY.selectAll("text").attr("transform", "translate(0, -15)");
  
  
   //svg.append("g")
