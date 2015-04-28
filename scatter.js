@@ -73,7 +73,7 @@ d3.csv("paired.csv", function(error, data) {
   var selY = svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
-  selY.selectAll("text").attr("transform", "translate(0, -15)");
+  selY.selectAll("text").attr("transform", "translate(0, -15-15)");
  
  
   //svg.append("g")
