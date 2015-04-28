@@ -90,6 +90,9 @@ svg.selectAll(".square")
 	  // the function is called every time the event occurs
       .on("mouseover", function (d) {
 		d3.select(this).classed("highlight", true)
+		window.filterIndices = d.map(function(el) {
+               return el[2];
+  });
       })
       .on("mouseout", function (d) {
             d3.select(this).classed("highlight", false)
