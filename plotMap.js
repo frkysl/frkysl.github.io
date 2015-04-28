@@ -41,7 +41,12 @@ d3.json("us.json", function(error, us) {
       .attr("id", "state-borders")
       .attr("d", path);
 
-    d3.csv("paired.csv", function(error, data) {
+   var data = null;
+    d3.csv("paired.csv", function(error, load) {
+  data = load;
+  update();
+    });
+    function update() {
         // --- Helper functions (for tweening the path)
         var lineTransition = function lineTransition(path) {
             path.transition()
