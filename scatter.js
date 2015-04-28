@@ -1,4 +1,4 @@
-var margin = {top: 50, right:80, bottom: 80, left: 50},
+var margin = {top: 50, right:50, bottom: 50, left: 50},
     w = 6*30 + margin.left - margin.right,
     h = 9*30 + margin.top - margin.bottom;
  
@@ -114,7 +114,7 @@ svg.selectAll(".square")
         
 svg.append("text")      // text label for the x axis
         .attr("x", 0 + (w/2)+15)
-        .attr("y", 0 + h + margin.bottom*0.35 )
+        .attr("y", 0 + h + margin.bottom )
         .style("text-anchor", "middle")
         .text("Scale (F)");
 	   
