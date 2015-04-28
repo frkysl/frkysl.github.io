@@ -103,7 +103,7 @@ d3.json("us.json", function(error, us) {
 			],
 			color: colorScale(f.f), //color
 			width: widthScale(f.wid), //width
-			opacity: opacityScale(f.f) //opacity
+			//opacity: opacityScale(f.f) //opacity
 
 			}			
 		});
