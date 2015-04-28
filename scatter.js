@@ -50,9 +50,9 @@ var points = [];
 d3.csv("paired.csv", function(error, data) {
  
   data.forEach(function(d) {
-    d.time = +d.f;
-    d.intensity = +d.sz;
-    points.push([d.time, d.intensity]);
+    d.f = +d.f;
+    d.sz = +d.sz;
+    points.push([d.f, d.sz]);
   });
  		//console.log(points);  //debugging
 
