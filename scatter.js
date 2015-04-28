@@ -87,8 +87,8 @@ svg.selectAll(".square")
       .attr("width", x(side)-2)
       .attr("height", yinv(side)-2)
       .style("fill", function(d) { return color(d.length); })
-	  // the function is called every time the event occurs
-      .on("click", function (d) {
+	// the function is called every time the event occurs
+      .on("mouseover", function (d) {
 		d3.select(this).classed("highlight", true)
 		window.filterIndices = d.map(function(el) {
                return el[2];
@@ -98,7 +98,8 @@ svg.selectAll(".square")
       .on("mouseout", function (d) {
             d3.select(this).classed("highlight", false)
        })
-       .append("title").text(function(d) { return d.length; });
+       .append("title").text(function(d) { return d.length; })
+       ;
 	   
 
 	   svg.append("text")
