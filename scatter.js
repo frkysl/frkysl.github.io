@@ -114,7 +114,7 @@ svg.selectAll(".square")
         
 svg.append("text")      // text label for the x axis
         .attr("x", 0 + (w/2)+15)
-        .attr("y", 0 + h + margin.bottom )
+        .attr("y", 0 + h + margin.bottom*0.9 )
         .style("text-anchor", "middle")
         .text("Scale (F)");
 	   
