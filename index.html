@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="d3.slider.css" />  
 <style>
 
 .background {
@@ -72,6 +73,15 @@ body {
             stroke: black;
         }
 
+
+.box {
+  display: inline-block;
+  width: 780px;
+  height: 10px;
+  margin: 1em;
+}
+
+
 </style>
 <body>
     <h2>
@@ -81,13 +91,36 @@ body {
 <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="d3.bin.js"></script>
+<script src="d3.slider.js"></script>
 
 	
 <div id="area1" style="display: inline-block;"></div>
 <script src="./plotMap.js"></script>
 <div id="area2" style="display: inline-block;"></div>
+<script src="scatter.js"></script>
+<div id="area3" style="display: inline;" class="box"></div>
+<h2> Hail Size: [<span id="slider3textmin">10</span>, <span id="slider3textmax">25</span>]</h2>
+<div id="slider" class="box"></div>
+<script src="d3.slider.js"></script>
+<script>
+d3.select('#slider').call(d3.slider().axis(true).value( [ 10, 25 ] ).on("slide", function(evt, value) {
+      d3.select('#slider3textmin').text(value[ 0 ]);
+      d3.select('#slider3textmax').text(value[ 1 ]);
+    }));
+ 
+  </script>
 
-	<script src="scatter.js"></script>
+  <div id="area4" style="display: inline;" class="box"></div>
+<h2> Fscale: [<span id="slider2textmin">10</span>, <span id="slider2textmax">25</span>]</h2>
+<div id="slider2" class="box"></div>
+<script src="d3.slider.js"></script>
+<script>
+d3.select('#slider2').call(d3.slider().axis(true).value( [ 10, 25 ] ).on("slide", function(evt, value) {
+      d3.select('#slider2textmin').text(value[ 0 ]);
+      d3.select('#slider2textmax').text(value[ 1 ]);
+    }));
+ 
+  </script>
 
 	
   </body>
